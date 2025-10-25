@@ -1,0 +1,17 @@
+# Archivos de entorno
+.env
+
+# Archivos de dependencias
+node_modules/
+venv/
+
+# Archivos temporales
+__pycache__/
+*.pyc
+*.log
+*.tmp
+
+# Configs locales
+.idea/
+.vscode/
+.DS_Store

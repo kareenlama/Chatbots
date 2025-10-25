@@ -1,4 +1,5 @@
 import os
+import time
 import warnings
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
@@ -24,6 +25,8 @@ llm = ChatOpenAI(
 # 🗨️ Bucle de chat básico
 print("💬 Chatbot Mistral vía OpenRouter (escribe 'salir' para terminar)\n")
 
+Meta_prompt = "Eres un veterinario especializado en nutrición canina natural. Responde mi pregunta con este rol. Pregunta:"
+Memo = ""
 while True:
     user_input = input("👤 Tú: ")
     if user_input.lower() in ["salir", "exit", "quit"]:
@@ -31,10 +34,19 @@ while True:
         break
 
     try:
-        response = llm.invoke([HumanMessage(content=user_input)])
+        response = llm.invoke([HumanMessage(content='Memoria del chat:' + Memo + 'Condiciones:' + Meta_prompt + 'Usuario:' + user_input)])
+        # print('Memoria del chat:' + Memo + 'Condiciones' + Meta_prompt + 'Usuario' + user_input)
         try:
             # Si es un AIMessage (objeto de mensaje)
             print(f"🤖 Bot: {response.content.strip()}\n")
+            Memo = Memo + 'Usuario:' + user_input + '\n' + 'Bot:' + response.content.strip()
+            time.sleep(2)
+            if len(Memo) > 1500:
+                resumen_prompt = f"Resume esta conversación de forma breve, conserva los puntos importantes:\n{Memo}"
+                resumen = llm.invoke([HumanMessage(content=resumen_prompt)])
+                Memo = resumen.content.strip()  # Guarda solo el resumen
+                print("🧠 (Resumen actualizado)\n")
+                print(resumen_prompt)
         except AttributeError:
             # Si es un dict o lista de mensajes (caso nuevo en langchain_openai)
             if isinstance(response, dict) and "content" in response:
