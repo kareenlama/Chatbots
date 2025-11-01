@@ -27,9 +27,9 @@ print("Modelo de embeddings 'gte-small' cargado correctamente.\n")
 # Lista de frases base que servirán como referencia o "ancla"
 # para comparar con los textos que el usuario escriba.
 textos_hogar = [
-    "casa", "hogar", "habitación", "sala", "comedor",
-    "el gato duerme en el sofá", "la comida está en la mesa",
-    "la luz del baño está encendida", "abro la puerta del cuarto"
+    "bosque", "montaña", "río", "playa", "cascada",
+    "el viento mueve las hojas", "el sol ilumina el sendero",
+    "el agua del río es cristalina", "camino por el bosque en silencio"
 ]
 
 # Genera los embeddings del diccionario base.

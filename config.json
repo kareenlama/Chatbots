@@ -1,8 +1,8 @@
 {
-  "pdf_path": "/Users/orodriguez/PycharmProjects/Chatbots/Anillos.pdf",
+  "pdf_path": "/Users/aleja/Downloads/chatbot/Chatbots/cien_anos_de_soledad_limpio.pdf",
 
   "deeplake": {
-    "dataset_path": "/Users/orodriguez/PycharmProjects/Chatbots/deeplake_db/anillos",
+    "dataset_path": "/Users/aleja/Downloads/chatbot/Chatbots/deeplake_db/cien_soledad",
     "read_only": true,
     "overwrite": true
   },
@@ -20,7 +20,7 @@
   },
 
   "retrieval": {
-    "k": 5
+    "k": 2
   },
 
   "llm": {
