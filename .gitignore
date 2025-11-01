@@ -1,6 +1,6 @@
 # Archivos de entorno
 .env
-
+.env.local
 # Archivos de dependencias
 node_modules/
 venv/
